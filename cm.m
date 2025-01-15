@@ -8,9 +8,10 @@ testDataPath = 'C:\Users\25197\OneDrive\Desktop\Friends\Test';
 testDatastore = imageDatastore(testDataPath, ...
     'IncludeSubfolders', true, 'LabelSource', 'foldernames');
 
-% Resize images to match the expected input size of the CNN
+% Adjust image size to match the CNN's required input dimensions
 inputSize = [224, 224];
 augmentedTestData = augmentedImageDatastore(inputSize, testDatastore, 'ColorPreprocessing', 'gray2rgb');
+
 
 % Make predictions on the test data using the trained model
 predictions = classify(modelNet, augmentedTestData);
